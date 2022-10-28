@@ -618,7 +618,7 @@ def doctor_patient_report_view(request):
     mydict={
     'doctor':models.Doctor.objects.get(user_id=request.user.id), #for profile picture of doctor in sidebar
     }
-    return render(request,'hospital/doctor_patient.html',context=mydict)
+    return render(request,'hospital/doctor_patient_report.html',context=mydict)
 
 
 
@@ -630,6 +630,16 @@ def doctor_view_patient_view(request):
     patients=models.Patient.objects.all().filter(status=True,assignedDoctorId=request.user.id)
     doctor=models.Doctor.objects.get(user_id=request.user.id) #for profile picture of doctor in sidebar
     return render(request,'hospital/doctor_view_patient.html',{'patients':patients,'doctor':doctor})
+
+
+@login_required(login_url='doctorlogin')
+@user_passes_test(is_doctor)
+def doctor_view_patient_report(request):
+    patients=models.Patient.objects.all().filter(status=True,assignedDoctorId=request.user.id)
+    doctor=models.Doctor.objects.get(user_id=request.user.id) #for profile picture of doctor in sidebar
+    report = models.Report.objects.all()
+    return render(request,'hospital/doctor_view_patient_report.html',{'patients':patients,'doctor':doctor, 'report':report})
+
 
 
 @login_required(login_url='doctorlogin')
@@ -651,6 +661,15 @@ def doctor_view_discharge_patient_view(request):
     return render(request,'hospital/doctor_view_discharge_patient.html',{'dischargedpatients':dischargedpatients,'doctor':doctor})
 
 
+
+@login_required(login_url='doctorlogin')
+@user_passes_test(is_doctor)
+def doctor_view_discharge_patient_report(request):
+    patients=models.PatientDischargeDetails.objects.all().distinct().filter(assignedDoctorName=request.user.first_name)
+    doctor=models.Doctor.objects.get(user_id=request.user.id) #for profile picture of doctor in sidebar
+    report = models.Report.objects.all()
+    return render(request,'hospital/doctor_view_patient_report.html',{'patients':patients,'doctor':doctor, 'report':report})
+  
 
 @login_required(login_url='doctorlogin')
 @user_passes_test(is_doctor)
