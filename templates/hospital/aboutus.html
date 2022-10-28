@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>About Us</title>
+  <style media="screen">
+    .jumbotron {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+
+    .jumbotron h1 {
+      text-align: center;
+    }
+
+    .alert {
+      margin: 0px;
+    }
+    .doc{
+      border: 3px 3px;
+      
+    }
+    .doc:hover{
+      background-color: aqua;
+    }
+  </style>
+  <title>About Us</title>
+</head>
+
+<body>
+  {% include "hospital/navbar.html" %}
+  <div class="be">
+  <br><br>
+  <center>
+    <h3 class='alert alert-success' style="margin-bottom:0px;">About Us !</h3>
+  </center>
+  <div class="jumbotron" style="margin-bottom: 0px;margin-top: 0px;">
+    <h1 class="display-4">Welcome</h1>
+    <p class="lead">A platform which connects Doctor and Patient. Admin monitors the whole process.</p>
+    <hr class="my-4">
+    <p>Find Our Doctors</p>
+
+    {% for a in doctors %}
+    <div class="doc">{{a}}
+      </div>
+    <br>
+    {%endfor%}
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="/" role="button">HOME</a>
+    </p>
+  </div>
+  </div>
+  {% include "hospital/footer.html" %}
+</body>
+</html>

@@ -1,0 +1,65 @@
+{% extends 'hospital/patient_base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title">Your Report</h6>
+    </div>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="container register-form">
+          <div class="form">
+            <div class="note">
+              <p>Update Doctor Details</p>
+            </div>
+            <div class="form-content">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    {% render_field reportForm.symptoms class="form-control" placeholder="Symptoms" %}
+                  </div>
+                  <div class="form-group">
+                    {% render_field reportForm.BloodPressure class="form-control" placeholder="BloodPressure" %}
+                  </div>
+                  <div class="form-group">
+                    {% render_field reportForm.Pulse class="form-control" placeholder="Pulse" %}
+                  </div>
+                  <div class="form-group">
+                    {% render_field reportForm.Respiration class="form-control" placeholder="Respiration" %}
+                  </div>
+                  
+                </div>
+                
+                </div>
+              </div>
+              <button type="submit" class="btnSubmit">Add</button>
+            </div>
+          </div>
+        </div>
+      </form>
+  </div>
+</div>
+
+{% endblock content %}
