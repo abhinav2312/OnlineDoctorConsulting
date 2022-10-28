@@ -84,6 +84,7 @@ urlpatterns +=[
     path('search', views.search_view,name='search'),
 
     path('doctor-patient', views.doctor_patient_view,name='doctor-patient'),
+    path('doctor-patient-report', views.doctor_patient_report_view,name='doctor-patient-report'),
     path('doctor-view-patient', views.doctor_view_patient_view,name='doctor-view-patient'),
     path('doctor-view-discharge-patient',views.doctor_view_discharge_patient_view,name='doctor-view-discharge-patient'),
 
@@ -103,10 +104,11 @@ urlpatterns +=[
     path('patient-appointment', views.patient_appointment_view,name='patient-appointment'),
     path('patient-book-appointment', views.patient_book_appointment_view,name='patient-book-appointment'),
     path('patient-view-appointment', views.patient_view_appointment_view,name='patient-view-appointment'),    
+    path('patient-report', views.patient_report,name='patient-report'),    
     path('patient-view-report', views.patient_view_report,name='patient-view-report'),    
+    path('patient-add-report', views.patient_add_report,name='patient-add-report'),    
     path('patient-view-doctor', views.patient_view_doctor_view,name='patient-view-doctor'),
     path('searchdoctor', views.search_doctor_view,name='searchdoctor'),
     path('patient-discharge', views.patient_discharge_view,name='patient-discharge'),
-    path('report', views.report, name = 'report'),
 ]
 

@@ -333,7 +333,7 @@ def update_patient_view(request,pk):
 
 @login_required(login_url='patientlogin')
 @user_passes_test(is_patient)
-def report(request):
+def patient_add_report(request):
     reportForm=forms.ReportForm()
     mydict={'reportForm':reportForm}
     if request.method=='POST':
@@ -344,7 +344,7 @@ def report(request):
             report.CreatedDate = date.today()
             report.save()
             return redirect('patient-dashboard')
-    return render(request,'hospital/report.html',context=mydict)
+    return render(request,'hospital/patient_add_report.html',context=mydict)
 
 
 
@@ -614,6 +614,12 @@ def doctor_patient_view(request):
     }
     return render(request,'hospital/doctor_patient.html',context=mydict)
 
+def doctor_patient_report_view(request):
+    mydict={
+    'doctor':models.Doctor.objects.get(user_id=request.user.id), #for profile picture of doctor in sidebar
+    }
+    return render(request,'hospital/doctor_patient.html',context=mydict)
+
 
 
 
@@ -791,11 +797,17 @@ def patient_view_appointment_view(request):
 
 @login_required(login_url='patientlogin')
 @user_passes_test(is_patient)
+def patient_report(request):
+    patient=models.Patient.objects.get(user_id=request.user.id) #for profile picture of patient in sidebar
+    return render(request,'hospital/patient_report.html',{'patient':patient})
+
+
+@login_required(login_url='patientlogin')
+@user_passes_test(is_patient)
 def patient_view_report(request):
     patient=models.Patient.objects.get(user_id=request.user.id) #for profile picture of patient in sidebar
     report=models.Report.objects.all().filter(user_id=request.user.id)
-    return render(request,'hospital/patient_view_report.html',{'report':report, 'patient':patient})
-
+    return render(request,'hospital/patient_view_report.html',{'report':report,'patient':patient})
 
 
 @login_required(login_url='patientlogin')

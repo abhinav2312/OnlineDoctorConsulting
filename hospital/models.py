@@ -52,7 +52,7 @@ class Appointment(models.Model):
     doctorId=models.PositiveIntegerField(null=True)
     patientName=models.CharField(max_length=40,null=True)
     doctorName=models.CharField(max_length=40,null=True)
-    appointment=models.DateField(null = True)
+    appointmentDate=models.DateField(null = True)
     description=models.TextField(max_length=500)
     status=models.BooleanField(default=False)
 
@@ -79,7 +79,6 @@ class PatientDischargeDetails(models.Model):
 
 class Report(models.Model):
     user_id=models.PositiveIntegerField(null = False)
-    CreatedDate=models.DateField(null=False)
     symptoms = models.CharField(max_length=100,null=True)
     BloodPressure = models.PositiveIntegerField(null=True)
     Pulse = models.PositiveIntegerField(null=True)
