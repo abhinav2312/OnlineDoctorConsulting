@@ -687,9 +687,13 @@ def doctor_view_appointment_view(request):
     patientid=[]
     for a in appointments:
         patientid.append(a.patientId)
+    patientid = set(patientid)
     patients=models.Patient.objects.all().filter(status=True,user_id__in=patientid)
-    appointments=zip(appointments,patients)
-    return render(request,'hospital/doctor_view_appointment.html',{'appointments':appointments,'doctor':doctor})
+    print(doctor)
+    print(appointments)
+    print(patients)
+    # appointments=zip(appointments,patients)
+    return render(request,'hospital/doctor_view_appointment.html',{'patients':patients, 'appointments':appointments,'doctor':doctor})
 
 
 

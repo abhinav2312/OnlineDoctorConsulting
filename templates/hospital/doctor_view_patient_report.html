@@ -21,10 +21,7 @@
     }
   </style>
 </head>
-<!--
-written By : sumit kumar
-facebook : fb.com/sumit.luv
--->
+
 <div class="container">
   <div class="panel panel-primary">
     <div class="panel-heading">
@@ -44,7 +41,6 @@ facebook : fb.com/sumit.luv
       {% for a in patients %}
       <tr>
         {% for p in report %}
-        
         {% if a.user_id == p.user_id%}
         <td> {{a.get_name}}</td>
         <td> <img src="{% static a.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
