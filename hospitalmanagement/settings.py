@@ -80,12 +80,13 @@ WSGI_APPLICATION = 'hospitalmanagement.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'proj5',
-        'USER': 'root',
-        'PASSWORD':'ABHI@123',
-        'HOST':'localhost',
-        'PORT':'3306'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3'
+        # 'NAME': 'proj5',
+        # 'USER': 'root',
+        # 'PASSWORD':'ABHI@123',
+        # 'HOST':'localhost',
+        # 'PORT':'3306'
     }
 }
 
